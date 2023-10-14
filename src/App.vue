@@ -1,18 +1,47 @@
 <template>
-  <div>Initing...</div>
+  <div>
+    <PostForm @create="createPost" />
+    <PostList :posts="posts" />
+  </div>
 </template>
 
-<style scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
-}
-</style>
+<script lang="ts">
+import { IPosts } from './types/IPosts';
+import PostForm from './components/postForm.vue';
+import PostList from './components/postList.vue';
+
+export default {
+  components: {
+    PostForm,
+    PostList,
+  },
+  data() {
+    return {
+      posts: [
+        {
+          id: 1,
+          title: 'Javascript 0',
+          body: 'Описание поста 0',
+        },
+        {
+          id: 2,
+          title: 'Javascript 1',
+          body: 'Описание поста 1',
+        },
+        {
+          id: 2,
+          title: 'Javascript 2',
+          body: 'Описание поста 2',
+        },
+      ],
+    };
+  },
+  methods: {
+    createPost(post: IPosts) {
+      this.posts.push(post);
+    },
+  },
+};
+</script>
+
+<style scoped></style>
