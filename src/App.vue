@@ -1,7 +1,7 @@
 <template>
-  <div>
+  <div class="posts">
     <PostForm @create="createPost" />
-    <PostList :posts="posts" />
+    <PostList :posts="posts" @remove="removePost" />
   </div>
 </template>
 
@@ -29,7 +29,7 @@ export default {
           body: 'Описание поста 1',
         },
         {
-          id: 2,
+          id: 3,
           title: 'Javascript 2',
           body: 'Описание поста 2',
         },
@@ -40,8 +40,15 @@ export default {
     createPost(post: IPosts) {
       this.posts.push(post);
     },
+    removePost(post: IPosts) {
+      this.posts = this.posts.filter((p) => p.id !== post.id);
+    },
   },
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.posts {
+  margin: 15px;
+}
+</style>

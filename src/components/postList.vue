@@ -1,16 +1,21 @@
 <template>
-  <div>
+  <div class="posts-list">
     <h3>Список постов</h3>
-    <PostItem v-for="post in posts" :key="post.id" :post="post" />
+    <PostItem
+      v-for="post in posts"
+      :key="post.id"
+      :post="post"
+      @remove="removePost(post)"
+    />
   </div>
 </template>
 
 <script lang="ts">
+import { defineComponent, PropType } from 'vue';
 import PostItem from './postItem.vue';
 import { IPosts } from '../types/IPosts';
-import { PropType } from 'vue';
 
-export default {
+export default defineComponent({
   components: { PostItem },
   props: {
     posts: {
@@ -18,7 +23,19 @@ export default {
       required: true,
     },
   },
-};
+  emits: ['remove'],
+  methods: {
+    removePost(post: IPosts) {
+      this.$emit('remove', post);
+    },
+  },
+});
 </script>
 
-<style scoped></style>
+<style scoped>
+.posts-list {
+  display: flex;
+  flex-direction: column;
+  row-gap: 15px;
+}
+</style>
