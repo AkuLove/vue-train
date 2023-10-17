@@ -1,5 +1,5 @@
 <template>
-  <div class="posts-list">
+  <div v-if="posts.length > 0" class="posts-list">
     <h3>Список постов</h3>
     <PostItem
       v-for="post in posts"
@@ -8,6 +8,7 @@
       @remove="removePost(post)"
     />
   </div>
+  <h3 v-else>Список постов пуст</h3>
 </template>
 
 <script lang="ts">
