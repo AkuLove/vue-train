@@ -1,12 +1,14 @@
 <template>
   <div v-if="posts.length > 0" class="posts-list">
     <h3>Список постов</h3>
-    <PostItem
-      v-for="post in posts"
-      :key="post.id"
-      :post="post"
-      @remove="removePost(post)"
-    />
+    <TransitionGroup name="postList">
+      <PostItem
+        v-for="post in posts"
+        :key="post.id"
+        :post="post"
+        @remove="removePost(post)"
+      />
+    </TransitionGroup>
   </div>
   <h3 v-else>Список постов пуст</h3>
 </template>
@@ -38,5 +40,24 @@ export default defineComponent({
   display: flex;
   flex-direction: column;
   row-gap: 15px;
+}
+
+.postList-item {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.postList-enter-active,
+.postList-leave-active {
+  transition: all 0.4s ease;
+}
+
+.postList-enter-from,
+.postList-leave-to {
+  opacity: 0;
+  transform: translateX(30px);
+}
+.postList-move {
+  transition: transform 0.3s ease;
 }
 </style>
