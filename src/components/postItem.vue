@@ -5,6 +5,9 @@
       <div><strong>Описание:</strong> {{ post.body }}</div>
     </div>
     <div class="post-buttons">
+      <DefaultButton class="button" @click="$router.push(`/posts/${post.id}`)">
+        Перейти
+      </DefaultButton>
       <DefaultButton class="delete" @click="removePost">
         Удалить пост
       </DefaultButton>
@@ -40,5 +43,10 @@ export default defineComponent({
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.post-buttons {
+  display: flex;
+  column-gap: 10px;
 }
 </style>

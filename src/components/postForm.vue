@@ -3,6 +3,7 @@
     <h4>Создать пост</h4>
     <DefaultInput
       v-model="post.title"
+      v-focus
       class="input"
       type="text"
       placeholder="Название"
@@ -13,7 +14,9 @@
       type="text"
       placeholder="Описание"
     />
-    <DefaultButton class="button" @click="createPost"> Создать </DefaultButton>
+    <DefaultButton type="button" class="button" @click="createPost">
+      Создать
+    </DefaultButton>
   </form>
 </template>
 

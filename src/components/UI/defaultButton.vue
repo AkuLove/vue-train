@@ -16,6 +16,7 @@ export default defineComponent({
   padding: 4px 8px;
   background-color: inherit;
   border: 1px solid navy;
+  border-radius: 4px;
   cursor: pointer;
   transition: border ease 0.3s;
 }
@@ -25,7 +26,6 @@ export default defineComponent({
 }
 
 .delete {
-  margin-top: 10px;
   padding: 4px 8px;
   background-color: inherit;
   border: 1px solid navy;
