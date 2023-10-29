@@ -1,4 +1,5 @@
 import { createApp } from 'vue';
+import { createPinia } from 'pinia';
 import './style.scss';
 import App from './App.vue';
 import components from './components/UI/indexUI';
@@ -19,4 +20,4 @@ components.forEach((component, index) => {
 app.directive('intersection', Vintersection);
 app.directive('focus', VFocus);
 
-app.use(router).mount('#app');
+app.use(router).use(createPinia()).mount('#app');

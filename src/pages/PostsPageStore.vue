@@ -45,6 +45,7 @@ import axios, { AxiosResponse } from 'axios';
 import DefaultSelect from '../components/UI/defaultSelect.vue';
 import DefaultInput from '../components/UI/defaultInput.vue';
 import { defineComponent } from 'vue';
+import { useMovieStore } from '../store/movieStore';
 
 export default defineComponent({
   components: {
@@ -70,6 +71,7 @@ export default defineComponent({
         { value: 'title', name: 'По названию' },
         { value: 'body', name: 'По описанию' },
       ],
+      movieStore: useMovieStore(),
     };
   },
   computed: {
